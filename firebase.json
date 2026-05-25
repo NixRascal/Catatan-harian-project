@@ -1,0 +1,26 @@
+{
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "catatan-harian-project",
+          "appId": "1:484913466979:android:bd56b2f0967e556bea3256",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "catatan-harian-project",
+          "configurations": {
+            "android": "1:484913466979:android:bd56b2f0967e556bea3256",
+            "ios": "1:484913466979:ios:87da8b012a0c5576ea3256"
+          }
+        }
+      }
+    }
+  }
+}

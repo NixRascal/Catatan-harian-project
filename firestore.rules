@@ -1,0 +1,89 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return request.auth.uid == userId;
+    }
+
+    function validMood(mood) {
+      return mood in [
+        '✨',
+        '😊',
+        '☁️',
+        '🌙',
+        '🌧️',
+        '🥳',
+        '🤔',
+        '😎'
+      ];
+    }
+
+    function validJournal(data) {
+      return data.keys().hasAll([
+          'userId',
+          'title',
+          'content',
+          'mood',
+          'moodLabel',
+          'category',
+          'colorTint',
+          'isFavorite',
+          'createdAt',
+          'updatedAt'
+        ])
+        && data.keys().hasOnly([
+          'userId',
+          'title',
+          'content',
+          'mood',
+          'moodLabel',
+          'category',
+          'colorTint',
+          'isFavorite',
+          'createdAt',
+          'updatedAt'
+        ])
+        && data.userId is string
+        && data.title is string
+        && data.title.size() > 0
+        && data.title.size() <= 100
+        && data.content is string
+        && data.content.size() > 0
+        && data.content.size() <= 10000
+        && data.mood is string
+        && validMood(data.mood)
+        && data.moodLabel is string
+        && data.moodLabel.size() > 0
+        && data.moodLabel.size() <= 40
+        && data.category in ['Personal', 'Work', 'Study', 'Family', 'Health', 'Idea']
+        && data.colorTint in ['paper', 'peach', 'rose', 'mint', 'lavender', 'sky', 'yellow']
+        && data.isFavorite is bool
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    match /journals/{journalId} {
+      allow read: if isAuthenticated()
+        && isOwner(resource.data.userId);
+
+      allow create: if isAuthenticated()
+        && isOwner(request.resource.data.userId)
+        && validJournal(request.resource.data);
+
+      allow update: if isAuthenticated()
+        && isOwner(resource.data.userId)
+        && isOwner(request.resource.data.userId)
+        && request.resource.data.userId == resource.data.userId
+        && request.resource.data.createdAt == resource.data.createdAt
+        && validJournal(request.resource.data);
+
+      allow delete: if isAuthenticated()
+        && isOwner(resource.data.userId);
+    }
+  }
+}
