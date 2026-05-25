@@ -50,7 +50,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 22),
             child: Text(
-              'Masukkan alamat email Anda untuk menerima kode pemulihan kata sandi.',
+              'Masukkan alamat email Anda. Kami akan mengirim tautan untuk reset kata sandi.',
               textAlign: TextAlign.center,
               style: AppTypography.bodySm,
             ),
@@ -72,7 +72,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
             padding: const EdgeInsets.symmetric(horizontal: 12),
             child: Obx(
               () => StitchButton(
-                label: 'Kirim Kode',
+                label: 'Kirim Tautan',
                 isLoading: controller.isLoading.value,
                 onPressed: controller.sendPasswordReset,
               ),

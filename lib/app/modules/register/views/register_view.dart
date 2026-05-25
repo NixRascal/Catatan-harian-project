@@ -84,9 +84,21 @@ class RegisterView extends GetView<RegisterController> {
               onPressed: controller.register,
             ),
           ),
-          const SizedBox(height: AppSpacing.s22),
-          const _DividerLabel(label: 'ATAU'),
-          const SizedBox(height: AppSpacing.s22),
+          const SizedBox(height: AppSpacing.s24),
+          Row(
+            children: [
+              const Expanded(child: Divider(height: 1)),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: Text(
+                  'ATAU',
+                  style: AppTypography.caption,
+                ),
+              ),
+              const Expanded(child: Divider(height: 1)),
+            ],
+          ),
+          const SizedBox(height: AppSpacing.s16),
           Obx(
             () => StitchGoogleButton(
               label: 'Daftar dengan Google',
@@ -113,26 +125,6 @@ class RegisterView extends GetView<RegisterController> {
           ),
         ],
       ),
-    );
-  }
-}
-
-class _DividerLabel extends StatelessWidget {
-  const _DividerLabel({required this.label});
-
-  final String label;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        const Expanded(child: Divider(color: AppColors.outlineVariant)),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 14),
-          child: Text(label, style: AppTypography.caption),
-        ),
-        const Expanded(child: Divider(color: AppColors.outlineVariant)),
-      ],
     );
   }
 }

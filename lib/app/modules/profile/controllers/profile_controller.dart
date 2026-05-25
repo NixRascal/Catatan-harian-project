@@ -6,7 +6,6 @@ import '../../../data/journal_entry.dart';
 import '../../../data/journal_mood.dart';
 import '../../../data/journal_repository.dart';
 import '../../../routes/app_pages.dart';
-import '../../../services/google_auth_service.dart';
 
 class ProfileController extends GetxController {
   ProfileController({JournalRepository? repository})
@@ -100,7 +99,7 @@ class ProfileController extends GetxController {
   }
 
   Future<void> logout() async {
-    await GoogleAuthService.signOut();
+    await FirebaseAuth.instance.signOut();
     Get.offAllNamed(Routes.LOGIN);
   }
 
@@ -123,7 +122,7 @@ class ProfileController extends GetxController {
     try {
       await repository.deleteAllForCurrentUser();
       await currentUser.delete();
-      await GoogleAuthService.signOut();
+      await FirebaseAuth.instance.signOut();
       Get.offAllNamed(Routes.LOGIN);
     } on FirebaseAuthException catch (e) {
       Get.back();

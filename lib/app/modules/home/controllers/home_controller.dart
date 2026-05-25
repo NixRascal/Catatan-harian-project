@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import '../../../data/journal_entry.dart';
 import '../../../data/journal_repository.dart';
 import '../../../routes/app_pages.dart';
-import '../../../services/google_auth_service.dart';
 import '../../../services/quote_service.dart';
 
 class HomeController extends GetxController {
@@ -100,7 +99,7 @@ class HomeController extends GetxController {
   }
 
   Future<void> logout() async {
-    await GoogleAuthService.signOut();
+    await FirebaseAuth.instance.signOut();
     Get.offAllNamed(Routes.LOGIN);
   }
 

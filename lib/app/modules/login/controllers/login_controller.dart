@@ -15,6 +15,12 @@ class LoginController extends GetxController {
   final RxBool isGoogleLoading = false.obs;
   final RxBool obscurePassword = true.obs;
 
+  @override
+  void onInit() {
+    super.onInit();
+    GoogleAuthService.instance.initialize();
+  }
+
   Future<void> login() async {
     final email = emailC.text.trim();
     final password = passwordC.text.trim();
@@ -38,12 +44,12 @@ class LoginController extends GetxController {
   Future<void> loginWithGoogle() async {
     isGoogleLoading.value = true;
     try {
-      await GoogleAuthService.signIn();
-      Get.offAllNamed(Routes.HOME);
+      final credential = await GoogleAuthService.instance.signIn();
+      if (credential != null) {
+        Get.offAllNamed(Routes.HOME);
+      }
     } on FirebaseAuthException catch (e) {
-      _showError(e.message ?? 'Google Sign-In gagal.');
-    } catch (_) {
-      _showError('Google Sign-In gagal. Periksa konfigurasi Firebase/OAuth.');
+      _showError(e.message ?? 'Terjadi kesalahan saat login Google.');
     } finally {
       isGoogleLoading.value = false;
     }

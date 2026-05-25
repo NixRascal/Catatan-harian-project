@@ -17,41 +17,29 @@ class OtpResetView extends GetView<OtpResetController> {
       child: ListView(
         padding: const EdgeInsets.fromLTRB(24, 24, 24, 32),
         children: [
+          const SizedBox(height: AppSpacing.s40),
+          const Icon(
+            Icons.mark_email_read_outlined,
+            size: 64,
+            color: AppColors.primary,
+          ),
           const SizedBox(height: AppSpacing.s24),
           Text(
-            'Verifikasi Kode',
+            'Email Terkirim',
             textAlign: TextAlign.center,
             style: AppTypography.headlineMd,
           ),
           const SizedBox(height: AppSpacing.s12),
           Text(
-            'Kami sudah mengirim tautan reset kata sandi ke ${controller.email}.',
+            'Kami sudah mengirim tautan reset kata sandi ke:',
             textAlign: TextAlign.center,
             style: AppTypography.bodySm,
           ),
-          const SizedBox(height: AppSpacing.s40),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(
-              4,
-              (index) => Container(
-                width: 48,
-                height: 56,
-                margin: const EdgeInsets.symmetric(horizontal: 5),
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: AppColors.surfaceLowest,
-                  borderRadius: AppSpacing.br8,
-                  border: Border.all(color: AppColors.outlineVariant),
-                ),
-                child: Text(
-                  index == 0 ? '\u2713' : '',
-                  style: AppTypography.headlineMd.copyWith(
-                    color: AppColors.primary,
-                  ),
-                ),
-              ),
-            ),
+          const SizedBox(height: AppSpacing.s8),
+          Text(
+            controller.email,
+            textAlign: TextAlign.center,
+            style: AppTypography.titleMd.copyWith(color: AppColors.primary),
           ),
           const SizedBox(height: AppSpacing.s40),
           Container(
@@ -63,12 +51,10 @@ class OtpResetView extends GetView<OtpResetController> {
             ),
             child: Column(
               children: [
-                const Icon(Icons.mark_email_read_outlined, size: 36),
+                const Icon(Icons.info_outline_rounded, size: 28),
                 const SizedBox(height: AppSpacing.s12),
-                Text('Cek inbox Anda', style: AppTypography.titleMd),
-                const SizedBox(height: AppSpacing.s8),
                 Text(
-                  'Buka email dari Firebase lalu ikuti tautan untuk membuat kata sandi baru.',
+                  'Buka email Anda lalu klik tautan untuk membuat kata sandi baru. Cek juga folder spam jika tidak ditemukan.',
                   textAlign: TextAlign.center,
                   style: AppTypography.bodySm,
                 ),
