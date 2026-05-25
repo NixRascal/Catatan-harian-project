@@ -7,14 +7,14 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:484913466979:android:bd56b2f0967e556bea3256",
+        "mobilesdk_app_id": "1:484913466979:android:92a427e73e0bfc31ea3256",
         "android_client_info": {
           "package_name": "com.kelompok6.catatan_harian_project"
         }
       },
       "oauth_client": [
         {
-          "client_id": "484913466979-er4af2p97jq48vvisoujo8qg485hcjhk.apps.googleusercontent.com",
+          "client_id": "484913466979-9767phitob0oac3s7rnmc19dpck53v3s.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.kelompok6.catatan_harian_project",
@@ -42,7 +42,51 @@
               "client_id": "484913466979-prn5q4d772bna3tjbkiabp948g4ap9p5.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.kelompok6.catatanHarianProject"
+                "bundle_id": "com.kelompok6.dailyJournalApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:484913466979:android:bd56b2f0967e556bea3256",
+        "android_client_info": {
+          "package_name": "com.kelompok6.daily_journal_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "484913466979-er4af2p97jq48vvisoujo8qg485hcjhk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kelompok6.daily_journal_app",
+            "certificate_hash": "a5e087f563f101e382658f46fd57e827b38de9be"
+          }
+        },
+        {
+          "client_id": "484913466979-9ko0hm0dammul8jl515jbvdcj2f06j21.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCM62arv_gP9JWNbkUz8qCuHrBbOg5Coco"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "484913466979-9ko0hm0dammul8jl515jbvdcj2f06j21.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "484913466979-prn5q4d772bna3tjbkiabp948g4ap9p5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kelompok6.dailyJournalApp"
               }
             }
           ]
